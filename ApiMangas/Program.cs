@@ -63,7 +63,7 @@ c.AddSecurityRequirement(new OpenApiSecurityRequirement
 
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
-         options.UseSqlServer(connection,
+         options.UseSqlite(connection,
              b => b.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
