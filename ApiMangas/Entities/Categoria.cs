@@ -30,11 +30,11 @@ public sealed class Categoria : Entity
            "Nome inválido");
         Nome = nome;
 
-        DomainExceptionValidation.When(string.IsNullOrEmpty(iconCss),
-           "Nome do ícone é obrigatório");
-        DomainExceptionValidation.When(iconCss.Length < 3,
-           "Nome do ícone inválido");
-        IconCSS = iconCss;
+        //DomainExceptionValidation.When(string.IsNullOrEmpty(iconCss),
+        //   "Nome do ícone é obrigatório");
+        //DomainExceptionValidation.When(iconCss.Length < 3,
+        //   "Nome do ícone inválido");
+        //IconCSS = iconCss;
     }
 
     public IEnumerable<Manga>? Mangas { get; set; }
