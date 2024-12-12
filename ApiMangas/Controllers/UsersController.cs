@@ -29,7 +29,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> CreateUser([FromBody] User model)
     {
         var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-
+        var erro = "";
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
@@ -38,7 +38,11 @@ public class UsersController : ControllerBase
         }
         else
         {
-            return BadRequest("Usuário ou senha inválidos");
+            foreach (var item in result.Errors)
+            {
+                erro += $"{item.Code} - {item.Description} \n";
+            }
+            return BadRequest($"Usuário ou senha inválidos:  {erro}");
         }
     }
 
